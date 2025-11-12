@@ -14,14 +14,12 @@ const movieSchema = new mongoose.Schema(
     language: { type: String, trim: true },
     country: { type: String, trim: true },
 
-    // 👤 Ownership
     userId: { type: String, required: true, trim: true },
     addedBy: { type: String, trim: true },
   },
   { timestamps: true }
 );
 
-// Optional: index for faster user-specific queries
 movieSchema.index({ userId: 1 });
 
 export default mongoose.model("Movie", movieSchema);

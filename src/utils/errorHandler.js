@@ -1,6 +1,3 @@
-// src/utils/errorHandler.js
-
-// Custom error handler middleware for Express
 export const errorHandler = (err, req, res, next) => {
   console.error("Error:", err.stack || err.message);
 

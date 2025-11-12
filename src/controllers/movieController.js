@@ -1,7 +1,5 @@
-// src/controllers/movieController.js
 import Movie from "../models/Movie.js";
 
-// ✅ Get all movies (public)
 export const getAllMovies = async (req, res) => {
   try {
     const movies = await Movie.find().sort({ createdAt: -1 });
@@ -12,7 +10,6 @@ export const getAllMovies = async (req, res) => {
   }
 };
 
-// ✅ Get single movie by ID (public)
 export const getMovieById = async (req, res) => {
   try {
     const movie = await Movie.findById(req.params.id);
@@ -24,7 +21,7 @@ export const getMovieById = async (req, res) => {
   }
 };
 
-// ✅ Get user’s own movies (protected)
+
 export const getMyMovies = async (req, res) => {
   try {
     const userId = req.user?.uid || req.user?.email;
@@ -36,7 +33,7 @@ export const getMyMovies = async (req, res) => {
   }
 };
 
-// ✅ Add new movie (protected)
+
 export const addMovie = async (req, res) => {
   try {
     const { title, genre, rating, year } = req.body;
@@ -58,13 +55,13 @@ export const addMovie = async (req, res) => {
   }
 };
 
-// ✅ Update a movie (protected)
+
 export const updateMovie = async (req, res) => {
   try {
     const movie = await Movie.findById(req.params.id);
     if (!movie) return res.status(404).json({ message: "Movie not found" });
 
-    // Optional: ensure the user owns this movie
+    
     if (movie.userId !== (req.user?.uid || req.user?.email)) {
       return res.status(403).json({ message: "Unauthorized to update this movie" });
     }
@@ -77,13 +74,13 @@ export const updateMovie = async (req, res) => {
   }
 };
 
-// ✅ Delete a movie (protected)
+
 export const deleteMovie = async (req, res) => {
   try {
     const movie = await Movie.findById(req.params.id);
     if (!movie) return res.status(404).json({ message: "Movie not found" });
 
-    // Optional: ensure user owns it
+   
     if (movie.userId !== (req.user?.uid || req.user?.email)) {
       return res.status(403).json({ message: "Unauthorized to delete this movie" });
     }

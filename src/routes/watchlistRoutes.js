@@ -4,7 +4,6 @@ import { verifyToken } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
-// ➕ Add movie to watchlist
 router.post("/", verifyToken, async (req, res) => {
   try {
     const { movieId } = req.body;
@@ -20,7 +19,6 @@ router.post("/", verifyToken, async (req, res) => {
   }
 });
 
-// 📜 Get user’s watchlist
 router.get("/", verifyToken, async (req, res) => {
   try {
     const userId = req.user.uid;
@@ -37,7 +35,6 @@ router.get("/", verifyToken, async (req, res) => {
   }
 });
 
-// ❌ Remove movie from watchlist
 router.delete("/:id", verifyToken, async (req, res) => {
   try {
     const item = await Watchlist.findOneAndDelete({

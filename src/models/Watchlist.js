@@ -16,7 +16,6 @@ const watchlistSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// Prevent same movie being added twice by the same user
 watchlistSchema.index({ userId: 1, movieId: 1 }, { unique: true });
 
 export default mongoose.model("Watchlist", watchlistSchema);
