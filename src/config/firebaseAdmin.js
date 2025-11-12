@@ -9,7 +9,7 @@ if (!admin.apps.length) {
     : undefined;
 
   if (!privateKey || !process.env.FIREBASE_CLIENT_EMAIL || !process.env.FIREBASE_PROJECT_ID) {
-    console.error("❌ Missing Firebase Admin environment variables!");
+    console.error("Missing Firebase Admin environment variables!");
     throw new Error("Firebase Admin initialization failed due to missing env vars.");
   }
 
@@ -21,7 +21,7 @@ if (!admin.apps.length) {
     }),
   });
 
-  console.log("✅ Firebase Admin initialized");
+  console.log("Firebase Admin initialized");
 }
 
 export default admin;
